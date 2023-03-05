@@ -9,7 +9,7 @@ cursor = db_connection.cursor()
 def create_account(username:str, password:str, email:str, ip:str) -> bool:
     status = cursor.execute(
         "INSERT INTO accounts (username, password, email, ip, upload, transfer) VALUES ( ?, ?, ?, ?, 0, 0 );",
-        (username, hashpw(bytes(password, "utf-8"), gensalt(12)), email, ip)
+        (username, hashpw(bytes(password, "utf-8"), gensalt(16)), email, ip)
     )
     db_connection.commit()
     return status
