@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/static/styles/datazone.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="center" style="flex-direction: row;">
+            <div class="half">
+                <!-- <details> -->
+                <form method = "POST" enctype="multipart/form-data">
+                  <input id="upload" type="file" name="file"/>
+
+                  <input type = "submit" value = "Submit" />
+                </form>
+                <table class="myTable">
+                  <tr class="header">
+                    <th style="width:60%;">Name</th>
+                    <th style="width:40%;">Upload Date</th>
+                  </tr>
+                  {% for file in file_data %}
+                  <tr>
+                    <td>{{file[0]}}</td>
+                    <td>{{file[1]}}</td>
+                  </tr>
+                  {%endfor%}
+                </table>
+                <!-- </details> -->
+            </div>
+            <div class="half">
+                <input type="text" class="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                  <table class="myTable">
+                    <tr class="header">
+                      <th style="width:60%;">Company Name</th>
+                      <th style="width:40%;">Available Files</th>
+                    </tr>
+                    <tr>
+                      <td>LATCH <button class="req">Request Genome</button></td>
+                    </tr>
+                    <tr>
+                      <td>1000 Genomes<button class="req">Request Genomes</button></td>
+                    </tr>
+                  </table>
+              <input type="text" class="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+              <table class="myTable">
+                  <tr class="header">
+                    <th>Requests</th>
+                  </tr>
+                  <tr>
+                    <td>LATCH</td>
+                    <td><button>+</button>/<button>-</button></td>
+                  </tr>
+                  <tr>
+                    <td>1000 Genomes</td>
+                    <td><button>+</button>/<button>-</button></td>
+                  </tr>
+              </table>
+            </div>
+        </div>
+        <div style="height: 300px; width: 500px; color: whitesmoke">
+        </div>
+    </body>
+</html>
+
+<footer style="width: 100%; height: 30px; text-align:center;">
+    <a style="padding:30px; margin:0; font-family:'Courier New', Courier, monospace; color: whitesmoke;" href="/datatrack">Usage Ananlysis</a>
+</footer>
