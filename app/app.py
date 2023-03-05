@@ -18,3 +18,11 @@ def login(username, password, ip_address) -> bool:
         return True
     else:
         return False
+<<<<<<< HEAD
+=======
+
+def login_business(username, password, ip_address, photo_url) -> bool:
+    pass
+
+create_account("Marcel", "Marcel", "Marcel@gmail.com", "16.145.24.53")
+>>>>>>> 4c10ae78117052ca7b368e9d47d4014a48737821

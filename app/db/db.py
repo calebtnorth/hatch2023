@@ -3,6 +3,7 @@ import sqlite3
 from bcrypt import hashpw, checkpw, gensalt
 from hashlib import md5
 from typing import Any
+
 db_connection = sqlite3.connect("app/db/users.db", check_same_thread=False)
 cursor = db_connection.cursor()
 
@@ -64,3 +65,23 @@ def check_cookie(username:str, cookie:str) -> bool:
 
     except TypeError:
         return False
+    
+def get_activity(activity:int):
+    """
+    True means username is available
+    """
+    df = pd.read_sql_query(
+            "SELECT activity FROM businesses WHERE activity=\""+ activity + "\"", db_connection
+        )
+    return df.head()
+   
+
+
+def get_local(local:int):
+    """
+    True means username is available
+    """
+    df = pd.read_sql_query(
+            "select local,export from businesses WHERE owner=" + "", db_connection
+        )
+    return df.head()
