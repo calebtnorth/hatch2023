@@ -17,3 +17,5 @@ def login_personal(username, password, ip_address) -> bool:
     
 def login_business(username, password, ip_address, photo_url) -> bool:
     pass
+
+create_account("Marcel", "Marcel", "Marcel@gmail.com", "16.145.24.53")
