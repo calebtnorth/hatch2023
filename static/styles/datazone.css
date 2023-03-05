@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.half {
+    float: left;
+    padding: 0;
+    margin: 5%;
+
+    background-color:whitesmoke;
+    width: 40vw;
+    height: 90vh;
+}
