@@ -20,7 +20,7 @@ def create(username:str, password:str, email:str, ip:str, imgurl) -> bool:
         print(f"[-] {e}")
         return False
 
-def check_account(username:str, password:str, ip:str) -> bool:
+def login(username:str, password:str, ip:str) -> bool:
     try:
         result = cursor.execute(
             "SELECT password FROM accounts WHERE username=? AND ip=?",

@@ -1,85 +1,56 @@
 <!DOCTYPE html>
-<html style="background-color:black">
+<html>
     <head>
         <link href="/static/styles/datazone.css" rel="stylesheet">
     </head>
     <body>
-        <div class="center" style="flex-direction: row; font-family:'Courier New', Courier, monospace">
+        <div class="center" style="flex-direction: row;">
             <div class="half">
-                <details>
-                    <summary style="font-family: 'Courier New', Courier, monospace; text-align:center"><h1><b>Company Genomes</b></h1></summary>
-                        <table id="myTable">
-                          <tr class="header">
-                            <th style="width:60%;">File</th>
-                            <th style="width:40%;">Upload Date</th>
-                          </tr>
-                          <tr>
-                            <td>this will be a link</td>
-                            <td>5/11/06</td>
-                          </tr>
-                          <tr>
-                            <td>this will be a link</td>
-                            <td>5/11/06</td>
-                          </tr>
-                          <tr>
-                            <td>this will be a link</td>
-                            <td>5/11/06</td>
-                          </tr>
-                          <tr>
-                            <td>this will be a link</td>
-                            <td>5/11/06</td>
-                          </tr>
-                        </table></p>
-                </details>
+              <p>Hello, {{ username }}</p>
+                <!-- <details> -->
+                <form method = "post" enctype="multipart/form-data">  
+                  <input id="upload" type="file" name="file"/>
+                </form>
+                <table class="myTable">
+                  <tr class="header">
+                    <th style="width:60%;">Name</th>
+                    <th style="width:40%;">Upload Date</th>
+                  </tr>
+                  <tr>
+                    <td>this will be a link</td>
+                    <td>5/11/06</td>
+                  </tr>
+                </table>
+                <!-- </details> -->
             </div>
             <div class="half">
-                <p><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                    <table id="myTable">
-                        <tr class="header">
-                          <th style="width:60%;">Company Name</th>
-                          <th style="width:40%;">Available Files</th>
-                        </tr>
-                        <tr>
-                          <td>company name <button>Request Genomes</button></td>
-                          <td>number</td>
-                        </tr>
-                        <tr>
-                          <td>company name <button>Request Genomes</button></td>
-                          <td>number</td>
-                        </tr>
-                        <tr>
-                          <td>company name <button>Request Genomes</button></td>
-                          <td>number</td>
-                        </tr>
-                        <tr>
-                          <td>company name <button>Request Genomes</button></td>
-                          <td>number</td>
-                        </tr>
-                      </table></p>
-                      <br>
-                      <br>
-                      <p><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                        <table id="myTable">
-                            <tr class="header">
-                              <th style="width:85%;">Requests</th>
-                            </tr>
-                            <tr>
-                              <td>company name <button>Request Genome</button></td>
-                              <td><button>+</button>/<button>-</button></td>
-                            </tr>
-                            <tr>
-                              <td>company name <button>Request Genomes</button></td>
-                              <td><button>+</button>/<button>-</button></td>
-                            </tr>
-                            <tr>
-                              <td>company name <button>Request Genomes</button></td>
-                              <td><button>+</button>/<button>-</button></td>
-                            </tr>
-                            <tr>
-                              <td>company name <button>Request Genomes</button></td>
-                              <td><button>+</button>/<button>-</button></td>
-                            </tr>
-                          </table></p>
+                <input type="text" class="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                  <table class="myTable">
+                    <tr class="header">
+                      <th style="width:60%;">Company Name</th>
+                      <th style="width:40%;">Available Files</th>
+                    </tr>
+                    <tr>
+                      <td>LATCH <button class="req">Request Genome</button></td>
+                    </tr>
+                    <tr>
+                      <td>1000 Genomes<button class="req">Request Genomes</button></td>
+                    </tr>
+                  </table>
+              <input type="text" class="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+              <table class="myTable">
+                  <tr class="header">
+                    <th>Requests</th>
+                  </tr>
+                  <tr>
+                    <td>LATCH</td>
+                    <td><button>+</button>/<button>-</button></td>
+                  </tr>
+                  <tr>
+                    <td>1000 Genomes</td>
+                    <td><button>+</button>/<button>-</button></td>
+                  </tr>
+              </table>
             </div>
         </div>
         <div style="height: 300px; width: 500px; color: whitesmoke">
