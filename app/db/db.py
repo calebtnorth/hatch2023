@@ -3,29 +3,15 @@ import sqlite3
 from bcrypt import hashpw, checkpw, gensalt
 from hashlib import md5
 from typing import Any
-db_connection = sqlite3.connect("app/db/users.db")
+db_connection = sqlite3.connect("app/db/users.db", check_same_thread=False)
 cursor = db_connection.cursor()
 
 # Loading / Writing
-def create_account(username:str, password:str, email:str, ip:str) -> bool:
+def create(username:str, password:str, email:str, ip:str, imgurl) -> bool:
     try:
         status = cursor.execute(
-            "INSERT INTO accounts (username, password, email, ip) VALUES ( ?, ?, ?, ? );",
-            (username, hashpw(bytes(password, "utf-8"), gensalt(16)), email, ip)
-        )
-        db_connection.commit()
-        return True
-    except Exception as e:
-        print(f"[-] {e}")
-        return False
-        
-
-def create_business(owner:str, imgurl:str, ) -> bool:
-    try:
-        # Not hashed for security but for uniqueness
-        status = cursor.execute(
-            "INSERT INTO businesses (owner, imgurl, approved, local, export) VALUES (?, ?, 0, 0, 0)",
-            (owner, imgurl)
+            "INSERT INTO accounts (username, password, email, ip, imgurl, local, export, approved) VALUES ( ?, ?, ?, ?, ?, 0, 0, 0 );",
+            (username, hashpw(bytes(password, "utf-8"), gensalt(16)), email, ip, imgurl)
         )
         db_connection.commit()
         return True

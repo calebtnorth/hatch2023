@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, flash, redirect, request, url_for
+from app import *
 
 app = Flask(__name__)
-app.secret_key = "asdf"
 
 @app.route('/')
 def test():
@@ -9,11 +9,27 @@ def test():
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
-    company = request.form["Company Name"]
-    email = request.form["Email"]
-    flash("You are a goofy foober. ", "error")
+    print(url_for("datazone"))
+    status = ""
+    if request.method == "POST":
+        if request.form["Password"] !=  request.form["Confirm"]:
+            status = "Passwords must match"
+        else:
+            query_result = create(
+                request.form["Name"], 
+                request.form["Email"],
+                request.form["Password"],
+                str(request.remote_addr),
+                request.form["file"]
+            )
+            if query_result:
+                print("redireft")
+                return redirect("datazone")
+            else:
+                status = "An error occured. Try a different username."
 
-    return render_template('signup.html')
+
+    return render_template('signup.html', status=status)
 
 @app.route('/login')
 def login():
