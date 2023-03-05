@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, request, url_for
+from flask import Flask, render_template, flash, redirect, request, url_for, make_response
 from app import *
 
 app = Flask(__name__)
@@ -9,7 +9,6 @@ def test():
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
-    print(url_for("datazone"))
     status = ""
     if request.method == "POST":
         if request.form["Password"] !=  request.form["Confirm"]:
@@ -23,20 +22,32 @@ def signup():
                 request.form["file"]
             )
             if query_result:
-                print("redireft")
-                return redirect("datazone")
+                login()
             else:
                 status = "An error occured. Try a different username."
-
 
     return render_template('signup.html', status=status)
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    status = ""
+    if request.method == "POST":
+        query_result = login(
+            request.form["Name"], 
+            request.form["Password"],
+            str(request.remote_addr),
+        )
+        if query_result or request.get_cookie("account") == request.form["Name"]:
+            res = make_response(redirect("datazone"))
+            res.set_cookie("account", request.form["Name"], 60 * 15)
+            res.set_cookie("redirect", "true", 15)
+        else:
+            status = "An error occured. Try a different username."
+    return render_template('login.html', status=status)
 
 @app.route('/datazone')
 def datazone():
+
     return render_template('datazone.html')
 
 @app.route('/datatrack')
