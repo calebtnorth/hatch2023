@@ -2,3 +2,5 @@
 *.db-journal
 *.pycache
 .venv
+*.gz
+*.tsv

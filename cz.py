@@ -1,5 +1,7 @@
 from flask import Flask, render_template, flash, redirect, request, url_for, make_response
 from app import *
+from os import listdir
+from random import randint
 
 app = Flask(__name__)
 
@@ -47,9 +49,15 @@ def login():
             status = "An error occured. Try a different username."
     return render_template('login.html', status=status)
 
-@app.route('/datazone')
+@app.route('/datazone', methods=["GET", "POST"])
 def datazone():
-    return render_template('datazone.html', username="Caleb North")
+    file_data=[]
+    for file in listdir("genomes"):
+        d=randint(1,29)
+        m=randint(1,13)
+        y=randint(2017,2022)
+        file_data.append([file, f"{m}/{d}/{y}"])
+    return render_template('datazone.html', username="Caleb North", file_data = file_data)
 
 @app.route('/datatrack')
 def datatrack():

@@ -6,20 +6,23 @@
     <body>
         <div class="center" style="flex-direction: row;">
             <div class="half">
-              <p>Hello, {{ username }}</p>
                 <!-- <details> -->
-                <form method = "post" enctype="multipart/form-data">  
+                <form method = "POST" enctype="multipart/form-data">
                   <input id="upload" type="file" name="file"/>
+
+                  <input type = "submit" value = "Submit" />
                 </form>
                 <table class="myTable">
                   <tr class="header">
                     <th style="width:60%;">Name</th>
                     <th style="width:40%;">Upload Date</th>
                   </tr>
+                  {% for file in file_data %}
                   <tr>
-                    <td>this will be a link</td>
-                    <td>5/11/06</td>
+                    <td>{{file[0]}}</td>
+                    <td>{{file[1]}}</td>
                   </tr>
+                  {%endfor%}
                 </table>
                 <!-- </details> -->
             </div>
