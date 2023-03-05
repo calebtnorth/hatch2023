@@ -1,13 +1,18 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, flash
 
 app = Flask(__name__)
+app.secret_key = "asdf"
 
 @app.route('/')
 def test():
     return render_template('home.html')
 
-@app.route('/signup')
+@app.route('/signup', methods=["GET", "POST"])
 def signup():
+    company = request.form["Company Name"]
+    email = request.form["Email"]
+    flash("You are a goofy foober. ", "error")
+
     return render_template('signup.html')
 
 @app.route('/login')
